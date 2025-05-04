@@ -4,6 +4,8 @@
 .env.local
 .env*.local
 
+echo -e "\n# Backend env files\nbackend/.env\nbackend/*.env" >> .gitignore
+
 # IDE özel dosyalar
 /shelf/
 /workspace.xml
