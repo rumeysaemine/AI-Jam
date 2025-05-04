@@ -7,3 +7,6 @@ class SuggestionRequest(BaseModel):
 
 class PlantSelection(BaseModel):
     plant_name: str
+
+class ChatRequest(BaseModel):
+    question: str

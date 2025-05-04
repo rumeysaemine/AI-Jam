@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from models import SuggestionRequest, PlantSelection
-from gemini_utils import get_plant_suggestions, get_plant_details
+from models import SuggestionRequest, PlantSelection, ChatRequest
+from gemini_utils import get_plant_suggestions, get_plant_details, get_chat_response 
 
 app = FastAPI()
 
@@ -23,3 +23,11 @@ async def suggest_plants(request: SuggestionRequest):
 async def plant_details(request: PlantSelection):
     details = get_plant_details(request.plant_name)
     return {"details": details}
+
+@app.post("/chatbot")
+async def chatbot_response(request: ChatRequest):
+    try:
+        response = get_chat_response(request.question)
+        return {"response": response}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

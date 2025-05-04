@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Bitki Öneri Sistemi Değişkenleri
   const form = document.getElementById("plant-form");
   const suggestionsDiv = document.getElementById("suggestions");
   const plantDetailsDiv = document.getElementById("plantDetails");
@@ -116,4 +117,121 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/<\/li>/g, '</li></ul>') // Liste bitişi
       .replace(/<\/ul><ul>/g, ''); // Ardışık ul tag'larını temizle
   }
+
+  
+  // CHATBOT KISMI
+  const chatbotToggler = document.querySelector(".chatbot-toggler");
+  const chatbotContainer = document.querySelector(".chatbot-container");
+  const chatbot = document.querySelector(".chatbot");
+  const chatbotCloseBtn = document.querySelector(".chatbot header .close-btn");
+  const chatInput = document.querySelector(".chat-input textarea");
+  const sendButton = document.querySelector(".send-btn");
+  const chatbox = document.querySelector(".chatbox");
+  let userMessage = null;
+  let isInitialized = false; // Chatbot'un başlatılıp başlatılmadığını takip etmek için
+
+  // Chatbot başlangıç durumu
+  const initChatbot = () => {
+    if (isInitialized) return; // Zaten başlatıldıysa tekrar başlatma
+    
+    chatbotContainer.classList.remove("show-chatbot");
+    chatbotToggler.classList.remove("active");
+    
+    // Hoş geldin mesajı (sadece ilk başlatmada)
+    if (chatbox.children.length === 0) {
+      const welcomeMsg = "Merhaba! 🌱 Sürdürülebilir tarım hakkında sorularınızı yanıtlayabilirim. Örneğin: 'Organik tarım nedir?' veya 'Su tasarrufu nasıl yapılır?'";
+      chatbox.appendChild(createChatLi(welcomeMsg, "incoming"));
+    }
+    
+    isInitialized = true;
+  };
+
+  // Chatbot aç/kapa
+  const toggleChatbot = () => {
+    chatbotContainer.classList.toggle("show-chatbot");
+    chatbotToggler.classList.toggle("active");
+    
+    if (chatbotContainer.classList.contains("show-chatbot")) {
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  };
+
+  // Mesaj oluşturma
+  const createChatLi = (message, className) => {
+    const chatLi = document.createElement("li");
+    chatLi.classList.add("chat", className);
+    
+    const chatContent = className === "outgoing" 
+      ? `<p>${message}</p>`
+      : `<span class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
+    
+    chatLi.innerHTML = chatContent;
+    return chatLi;
+  };
+
+  // Mesaj gönderme
+  const handleChat = () => {
+    userMessage = chatInput.value.trim();
+    if (!userMessage) return;
+
+    chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+    chatInput.value = "";
+    chatbox.scrollTop = chatbox.scrollHeight;
+    
+    const incomingChatLi = createChatLi("Yazıyor...", "incoming");
+    chatbox.appendChild(incomingChatLi);
+    chatbox.scrollTop = chatbox.scrollHeight;
+    
+    generateResponse(incomingChatLi);
+  };
+
+  // API'den cevap alma
+  const generateResponse = async (chatElement) => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/chatbot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: userMessage })
+      });
+
+      if (!response.ok) throw new Error("Cevap alınamadı");
+      
+      const data = await response.json();
+      chatElement.querySelector("p").textContent = data.response;
+    } catch (error) {
+      chatElement.querySelector("p").textContent = "Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.";
+    } finally {
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  };
+
+  // Event Listeners
+  chatbotToggler.addEventListener("click", toggleChatbot);
+  chatbotCloseBtn.addEventListener("click", () => {
+    chatbotContainer.classList.remove("show-chatbot");
+    chatbotToggler.classList.remove("active");
+  });
+
+  // Dışarı tıklayarak kapatma
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".chatbot") && 
+        !e.target.closest(".chatbot-toggler") &&
+        chatbotContainer.classList.contains("show-chatbot")) {
+      chatbotContainer.classList.remove("show-chatbot");
+      chatbotToggler.classList.remove("active");
+    }
+  });
+
+  sendButton.addEventListener("click", handleChat);
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleChat();
+    }
+  });
+
+  // Chatbot'u başlat
+  initChatbot();
+  
+  
 });
