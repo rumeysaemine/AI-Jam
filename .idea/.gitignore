@@ -1,0 +1,15 @@
+# Çevresel değişken dosyaları
+.env
+*.env
+.env.local
+.env*.local
+
+# IDE özel dosyalar
+/shelf/
+/workspace.xml
+.idea/
+
+# Python özel
+__pycache__/
+*.py[cod]
+*.pyc
