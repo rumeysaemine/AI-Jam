@@ -1,124 +1,166 @@
 /* Genel stil */
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4fdf5;
-    color: #2f4f4f;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px;
-  }
-  
-  /* Uygulama kutusu */
-  .container {
-    max-width: 600px;
-    width: 100%;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 128, 0, 0.1);
-  }
-  
-  /* Başlık */
-  h1 {
-    text-align: center;
-    color: #2e7d32;
-    margin-bottom: 30px;
-  }
-  
-  /* Form etiket ve inputlar */
-  form label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #c8e6c9;
-    border-radius: 8px;
-    font-size: 14px;
-  }
-  
-  /* Buton stili */
-  button {
-    width: 100%;
-    padding: 12px;
-    background-color: #43a047;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #388e3c;
-  }
-  
-  /* Bitki önerileri kartları */
-  .card-container {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .card {
-    background-color: #e8f5e9;
-    border-left: 6px solid #66bb6a;
-    padding: 15px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .card:hover {
-    background-color: #d0f0d4;
-  }
-  
-  /* Bitki detayları */
-  .plant-details {
-    margin-top: 30px;
-    background-color: #f1f8e9;
-    border-radius: 12px;
-    padding: 20px;
-    border-left: 6px solid #81c784;
-    white-space: pre-wrap;
-    line-height: 1.5;
-  }
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4fdf5;
+  color: #2f4f4f;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  line-height: 1.6;
+}
 
-  .error {
-    color: #d32f2f;
-    background-color: #ffebee;
-    padding: 10px;
-    border-radius: 8px;
-    border-left: 4px solid #f44336;
-  }
-  
-  /* Bitki butonları */
-  .plant-button {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #c8e6c9;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 5px;
-  }
-  
-  .plant-button:hover {
-    background-color: #c8e6c9;
-  }
+/* Uygulama kutusu */
+.container {
+  max-width: 600px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.1);
+}
 
-  /* Yükleniyor animasyonu */
+/* Başlık */
+h1 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+/* Form yapısı */
+.form-group {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+/* Buton stili */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #43a047;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #388e3c;
+}
+
+button:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+/* Kart yapıları */
+.card-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card {
+  background-color: #e8f5e9;
+  border-left: 6px solid #66bb6a;
+  padding: 15px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover {
+  background-color: #d0f0d4;
+  transform: translateY(-2px);
+}
+
+/* Bitki detayları */
+.plant-details {
+  margin-top: 30px;
+  background-color: #f1f8e9;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 6px solid #81c784;
+  display: none;
+}
+
+.plant-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.plant-details-content {
+  line-height: 1.6;
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+.plant-details-content ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.plant-details-content li {
+  margin-bottom: 5px;
+}
+
+/* Geri dön butonu */
+.back-button {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 8px 20px; /* Yan padding'i artırdık */
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  width: auto; /* Sabit genişlik yerine içeriğe göre ayar */
+  display: inline-block; /* İçerik genişliğine göre boyut */
+  min-width: 120px; /* Minimum genişlik belirledik */
+  text-align: center; /* Metni ortala */
+  transition: all 0.3s ease; /* Daha smooth geçiş */
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px); /* Hafif hover efekti */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Yükleniyor animasyonu */
+.loading-container {
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+}
+
 .loading-spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
@@ -134,31 +176,37 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Bitki detay içeriği */
-.plant-details-content {
-  line-height: 1.6;
+/* Hata mesajları */
+.error {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 4px solid #f44336;
   margin: 15px 0;
 }
 
-.plant-details-content ul {
-  margin: 10px 0;
-  padding-left: 20px;
-}
-
-.plant-details-content li {
-  margin-bottom: 5px;
-}
-
-.back-button {
-  background-color: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 8px 15px;
-  margin-top: 15px;
-  cursor: pointer;
-}
-
-.back-button:hover {
-  background-color: #e0e0e0;
-}
+/* Responsive düzenlemeler */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
   
+  body {
+    padding: 20px 10px;
+  }
+  
+  .plant-details-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .back-button {
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  form input, button {
+    padding: 12px 8px;
+  }
+}
