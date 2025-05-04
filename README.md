@@ -1,0 +1,2 @@
+# AI-Jam
+YZTA AI-Jam 2025
