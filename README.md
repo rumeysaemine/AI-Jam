@@ -22,6 +22,7 @@
 - ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white)
 
 **Backend**  
-- ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white) (FastAPI/Flask)
+- ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white)
+- ![FastAPI](https://img.shields.io/badge/FastAPI-005571?logo=fastapi&logoColor=white)
 - ![Gemini API](https://img.shields.io/badge/-Gemini_API-4285F4?logo=google&logoColor=white)
 
