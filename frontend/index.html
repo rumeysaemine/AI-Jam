@@ -9,44 +9,57 @@
   <script type="module" src="src/main.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Sürdürülebilir Tarım Asistanı</h1>
-    
-    <form id="plant-form">
-      <div class="form-group">
-        <label for="location">Konum:</label>
-        <input type="text" id="location" name="location" placeholder="Örn: İzmir" required>
+  <!-- Video Arka Plan -->
+  <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="assets/video7.mp4" type="video/mp4">
+      Tarayıcınız video desteklemiyor.
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Ana İçerik -->
+  <div class="content">
+    <div class="container">
+      <h1>Sürdürülebilir Tarım Asistanı</h1>
+      
+      <form id="plant-form">
+        <div class="form-group">
+          <label for="location">Konum:</label>
+          <input type="text" id="location" name="location" placeholder="Örn: İzmir" required>
+        </div>
+
+        <div class="form-group">
+          <label for="weather">Hava Durumu:</label>
+          <input type="text" id="weather" name="weather" placeholder="Örn: Güneşli, Yağmurlu" required>
+        </div>
+
+        <div class="form-group">
+          <label for="soil_type">Toprak Tipi:</label>
+          <input type="text" id="soil_type" name="soil_type" placeholder="Örn: Killi, Kumlu" required>
+        </div>
+
+        <button type="submit" id="submitBtn">Bitki Önerisi Al</button>
+      </form>
+
+      <div id="loading" class="loading-container" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Bitkiler analiz ediliyor...</p>
       </div>
 
-      <div class="form-group">
-        <label for="weather">Hava Durumu:</label>
-        <input type="text" id="weather" name="weather" placeholder="Örn: Güneşli, Yağmurlu" required>
+      <div id="suggestions" class="card-container"></div>
+      
+      <div id="plantDetails" class="plant-details" style="display: none;">
+        <div class="plant-details-header">
+          <h2 id="detailTitle"></h2>
+          <button class="back-button">← Geri Dön</button>
+        </div>
+        <div id="detailContent" class="plant-details-content"></div>
       </div>
-
-      <div class="form-group">
-        <label for="soil_type">Toprak Tipi:</label>
-        <input type="text" id="soil_type" name="soil_type" placeholder="Örn: Killi, Kumlu" required>
-      </div>
-
-      <button type="submit" id="submitBtn">Bitki Önerisi Al</button>
-    </form>
-
-    <div id="loading" class="loading-container" style="display: none;">
-      <div class="loading-spinner"></div>
-      <p>Bitkiler analiz ediliyor...</p>
-    </div>
-
-    <div id="suggestions" class="card-container"></div>
-    
-    <div id="plantDetails" class="plant-details" style="display: none;">
-      <div class="plant-details-header">
-        <h2 id="detailTitle"></h2>
-        <button class="back-button">← Geri Dön</button>
-      </div>
-      <div id="detailContent" class="plant-details-content"></div>
     </div>
   </div>
   
+  <!-- Chatbot -->
   <div class="chatbot-container">
     <button class="chatbot-toggler">
       <span class="material-symbols-outlined chat-icon">chat</span>

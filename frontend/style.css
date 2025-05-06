@@ -1,8 +1,51 @@
+/* Video Arka Plan Stilleri */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* Ana İçerik */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Yatayda ortala */
+  padding: 40px 20px;
+}
+
 /* Genel stil */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #f4fdf5;
+  /*background-color: #f4fdf5;*/
   color: #2f4f4f;
   display: flex;
   justify-content: center;
@@ -10,6 +53,7 @@ body {
   min-height: 100vh;
   padding: 40px 20px;
   line-height: 1.6;
+  background-color: transparent !important;
 }
 
 /* Uygulama kutusu */
@@ -20,6 +64,7 @@ body {
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 128, 0, 0.1);
+  backdrop-filter: blur(2px); 
 }
 
 /* Başlık */
