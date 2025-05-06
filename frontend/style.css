@@ -60,7 +60,7 @@ body {
 .container {
   max-width: 600px;
   width: 100%;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.80); /* Beyaz arkaplan %85 opaklık ile */
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 128, 0, 0.1);
@@ -87,9 +87,13 @@ form label {
 }
 
 form input {
-  width: 100%;
+  width: 98%;  /* Genişliği %100'den daha az yaparak ortalama için alan bırakıyoruz */
   padding: 10px;
   margin-bottom: 5px;
+  margin-left: auto;  /* Sol kenardan otomatik margin */
+  margin-right: auto; /* Sağ kenardan otomatik margin */
+  display: block;     /* Block element olarak davranmasını sağlıyoruz */
+  background-color: rgba(255, 255, 255, 0.80);
   border: 1px solid #c8e6c9;
   border-radius: 8px;
   font-size: 14px;
@@ -190,26 +194,31 @@ button:disabled {
 
 /* Geri dön butonu */
 .back-button {
-  background-color: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 8px 20px; /* Yan padding'i artırdık */
+  background-color: #e8f5e9; /* Açık yeşil arkaplan */
+  color: #2e7d32; /* Koyu yeşil yazı */
+  border: 1px solid #c8e6c9; /* Daha açık yeşil border */
+  padding: 8px 20px;
   margin-top: 15px;
   cursor: pointer;
   border-radius: 8px;
-  width: auto; /* Sabit genişlik yerine içeriğe göre ayar */
-  display: inline-block; /* İçerik genişliğine göre boyut */
-  min-width: 120px; /* Minimum genişlik belirledik */
-  text-align: center; /* Metni ortala */
-  transition: all 0.3s ease; /* Daha smooth geçiş */
+  width: auto;
+  display: inline-block;
+  min-width: 120px;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-weight: 500; /* Yazı kalınlığı */
 }
 
 .back-button:hover {
-  background-color: #e0e0e0;
-  transform: translateY(-1px); /* Hafif hover efekti */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #d0f0d4; /* Hover durumunda biraz daha koyu */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(46, 125, 50, 0.2); /* Yeşil tonunda shadow */
 }
 
+.back-button:active {
+  transform: translateY(0);
+  background-color: #c8e6c9; /* Basılı durum */
+}
 /* Yükleniyor animasyonu */
 .loading-container {
   text-align: center;
